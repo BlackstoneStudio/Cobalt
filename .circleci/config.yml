@@ -19,7 +19,7 @@ commands:
           repo: ${MY_APP_PREFIX}
           tag: <<parameters.tag>>
           path: docker/production.Dockerfile
-
+          context: .
 jobs:
   PublishProd:
     executor: aws-ecr/default
