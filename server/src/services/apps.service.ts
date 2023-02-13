@@ -252,10 +252,19 @@ export class AppsService {
   ): Promise<AppVersion> {
     return await dbTransactionWrap(async (manager: EntityManager) => {
       let versionFrom: AppVersion;
+
       if (versionFromId) {
         versionFrom = await manager.findOneOrFail(AppVersion, {
           where: { id: versionFromId },
-          relations: ['appEnvironments', 'dataSources', 'dataSources.dataQueries', 'dataSources.dataSourceOptions'],
+        });
+
+        versionFrom.appEnvironments = await manager.find(AppEnvironment, {
+          where: { appVersionId: versionFrom.id },
+        });
+
+        versionFrom.dataSources = await manager.find(DataSource, {
+          where: { appVersionId: versionFrom.id },
+          relations: ["dataQueries", "dataSourceOptions"],
         });
       }
 
