@@ -22,7 +22,7 @@ commands:
           aws-secret-access-key: AWS_SECRET
           repo: ${MY_APP_PREFIX}
           tag: <<parameters.tag>>
-          path: docker
+          # path: docker
 
 jobs:
   PublishProd:
