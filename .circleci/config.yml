@@ -12,14 +12,14 @@ commands:
         type: string
     steps:
       - aws-ecr/build-and-push-image:
-          dockerfile: Dockerfile
+          dockerfile: production.Dockerfile
           account-url: <<parameters.accountUrl>>
           aws-access-key-id: AWS_ACCESS_KEY
           aws-secret-access-key: AWS_SECRET
           repo: ${MY_APP_PREFIX}
           tag: <<parameters.tag>>
-          path: docker/production.Dockerfile
-          build-path: .
+          path: docker
+
 jobs:
   PublishProd:
     executor: aws-ecr/default
