@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  aws-ecr: circleci/aws-ecr@8.2.1
+  aws-ecr: circleci/aws-ecr@7.2.0
 
 commands:
   ecr_publish:
@@ -19,7 +19,7 @@ commands:
           repo: ${MY_APP_PREFIX}
           tag: <<parameters.tag>>
           path: docker/production.Dockerfile
-          context: .
+          build-path: .
 jobs:
   PublishProd:
     executor: aws-ecr/default
