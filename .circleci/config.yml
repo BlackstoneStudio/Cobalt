@@ -22,14 +22,14 @@ commands:
           aws-secret-access-key: AWS_SECRET
           repo: ${MY_APP_PREFIX}
           tag: <<parameters.tag>>
-          path: docker/production.Dockerfile
-          build-path: .
+          # path: docker
+
 jobs:
   PublishProd:
     executor: aws-ecr/default
     steps:
       - ecr_publish:
-          tag: "latest"
+          tag: 'latest'
           accountUrl: AWS_ECR_ACCOUNT_URL
 
 workflows:
