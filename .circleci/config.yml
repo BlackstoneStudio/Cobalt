@@ -1,4 +1,8 @@
 version: 2.1
+defaults: &defaults
+  working_directory: ~/repo/
+  docker:
+    - image: node:18.3.0
 
 orbs:
   aws-ecr: circleci/aws-ecr@7.2.0
